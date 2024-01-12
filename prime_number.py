@@ -19,7 +19,7 @@ def is_prime_num(n: int) -> bool:
     for i in range(2, sqrt_n_int):
         if n % i == 0:                         # 割り切れると素数ではないことがわかる。
             return False
-        if i == (sqrt_n_int - 1):              # iが最後の値（n-1）になった場合、aは素数である。
+        if i == (sqrt_n_int - 1):              # iが最後の値（sqrt_n_int-1）になった場合、aは素数である。
             return True
 
 is_prime_num_a = is_prime_num(a)               # 61の素数判定
