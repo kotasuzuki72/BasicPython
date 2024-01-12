@@ -3,31 +3,24 @@ b = int(input("bの値を入力: "))
 
 # TODO
 
-# aに1もしくは2が入力されたとき
-if a == 1:
-    print(f'{a}(aの値)は素数ではありません')
-if a == 2:
-    print(f'{a}(aの値)は素数です')
+def is_prime_num(n: int) -> bool:
+    """素数のときTrue, 素数でない時Falseを返す。"""
+    if n == 1:
+        return False
+    if n == 2:
+        return True
+    if n == 3.14:                              # 1, 2行目でint型を指定しているため、ここは呼ばれないが、エクストラ問題の解答として記載。
+        raise ValueError("整数を入力して下さい")
+    if n == -1:
+        raise ValueError("正の数を入力して下さい")
+    for i in range(2, n):
+        if n % i == 0:                         # 割り切れると素数ではないことがわかる。
+            return False
+        if i == (n - 1):                       # iが最後の値（n-1）になった場合、aは素数である。
+            return True
 
-# 61(aの値)が素数であることの確認
-for i in range(2, a):
-    if a % i == 0:    # 割り切れると素数ではないことがわかる。
-        print(f'{a}(aの値)は素数ではありません')
-        break              # break文によって繰り返しを終える。
-    if i == (a - 1):  # iが最後の値（a-1）になった場合、aは素数である。
-        print(f'{a}(aの値)は素数です')
+is_prime_num_a = is_prime_num(a)               # 61の素数判定
+is_prime_num_b = is_prime_num(b)               # 10の素数判定
 
-
-# bに1もしくは2が入力されたとき
-if b == 1:
-    print(f'{b}(bの値)は素数ではありません')
-if b == 2:
-    print(f'{b}(bの値)は素数です')
-
-# 10(bの値)が素数でないことの確認
-for j in range(2, b):
-    if b % j == 0:    # 割り切れると素数ではないことがわかる。
-        print(f'{b}(bの値)は素数ではありません')
-        break              # break文によって繰り返しを終える。
-    if j == (b - 1):  # jが最後の値（b-1）になった場合、bは素数である。
-        print(f'{b}(bの値)は素数です')
+print(is_prime_num_a)                          # 結果はTrue
+print(is_prime_num_b)                          # 結果はFalse
